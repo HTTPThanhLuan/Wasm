@@ -1,0 +1,25 @@
+﻿@page "/async-init"
+<h1>Components with asynchronous OnInitializedAsync()</h1>
+
+    <Virtualize Items=@items ItemSize=20>
+        <AsynchronousInitComponent />
+    </Virtualize>
+
+      @* @for (int i = 0; i < 1000000; i++)
+        {
+            <AsynchronousInitComponent />
+        }*@
+
+@code {
+    private List<int> items{ get; set; } 
+    protected async override Task OnInitializedAsync()
+    {
+        items = new List<int>();
+        for (int i = 0; i < 1000000; i++)
+        {
+            items.Add(i);
+        }
+    }
+   
+
+}

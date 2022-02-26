@@ -1,0 +1,28 @@
+﻿@page "/refresh-ui"
+@using System.Threading;
+@using System.Threading;  
+
+
+    Counter: @Count  
+    <br />  
+
+    <button @onclick=Countdown>Start</button>  
+
+@code {
+    private int Count { get; set; } = 1000;
+    void Countdown()  
+    {  
+        var timer = new Timer(TimeCallBack, null, 1000, 1000);  
+
+    }  
+
+   void TimeCallBack(object state)  
+    {  
+        if (Count > 0)  
+        {  
+            Count--;
+           // StateHasChanged();
+            InvokeAsync(StateHasChanged);  
+        }  
+    }  
+}  
